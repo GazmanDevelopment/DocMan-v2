@@ -10,10 +10,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <h3 class="panel-title">Please Sign In</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <div id="infoMessage"><?php echo $message;?></div>
+                            <?php echo form_open('user/login', 'role="form" method="post"'); ?>
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                        <input class="form-control" placeholder="E-mail" name="identity" type="email" autofocus>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Password" name="password" type="password" value="">
@@ -24,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </label>
                                     </div>
                                     <!-- Change this to a button or input when using this as a form -->
-                                    <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
+                                    <?php echo form_submit('submit', 'Login', 'class="btn btn-lg btn-success btn-block"'); ?>
                                 </fieldset>
                             </form>
                             <br />

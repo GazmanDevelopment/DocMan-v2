@@ -2,11 +2,32 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config = array(
+	// User login validation
+	'user_login' => array(
+		array(
+			'field'	=> 'identity',
+			'label'	=> 'Email address',
+			'rules'	=> 'trim|valid_email|required',
+			'errors'	=> array(
+				'required'	=> 'You must enter a %s',
+				'valid_email'	'%s is not a valid email address'
+			)
+		),
+		array(
+			'field'	=> 'password',
+			'label'	=> 'Password',
+			'rules'	=> 'trim|required',
+			'errors'	=> array(
+				'required'	=> 'You must enter a %s'
+			)
+		)
+	),
+	// Add new user validation
 	'user_add_edit'	=> array(
 		array(
-			'field'	=> 'email',
+			'field'	=> 'identity',
 			'label'	=> 'Email Address',
-			'rules' => 'trim|required|valid_email|is_unique[user.email]',
+			'rules' => 'trim|required|valid_email|is_unique[users.email]',
 			'errors' 	=> array(
 				'required'	=> 'You must enter a %s',
 				'valid_email'	=> '%s is not a valid email address',
@@ -23,7 +44,7 @@ $config = array(
 			)
 		),
 		array(
-			'field'	=> 'password_confirm',
+			'field'	=> 'pass_confirm',
 			'label'	=> 'Password confirmation',
 			'rules'	=> 'trim|required|matches[password]',
 			'errors'	=> array(
@@ -37,26 +58,6 @@ $config = array(
 			'rules'	=> 'trim|required',
 			'errors'	=> array(
 				'required'	=> '%s is required'
-			)
-		),
-		array(
-			'field'	=> 'company_id',
-			'label'	=> 'Company',
-			'rules'	=> 'trim|required|numeric',
-			'errors'	=>array(
-				'required'	=> 'A company is required',
-				'numeric'	=> 'Company ID must be a number'
-			)
-		),
-		array(
-			'field'	=> 'uac_level',
-			'label'	=> 'User Access Level',
-			'rules'	=> 'trim|required|numeric|greater_than_equal_to[0]|less_than_equal_to[4]',
-			'errors'	=> array(
-				'required'	=> '%s is required to be supplied',
-				'numeric'	=> '%s must be a number between 0 and 4',
-				'greater_than_equal_to'	=> '%s must be a number between 0 and 4',
-				'less_than_equal_to'	=> '%s must be a number between 0 and 4'
 			)
 		)
 	)

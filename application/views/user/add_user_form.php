@@ -2,12 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $email_attr = array(
-	'name'	=> 'email',
-	'id'	=> 'email',
+	'name'	=> 'identity',
+	'id'	=> 'identity',
 	'size'	=> '50',
 	'type'	=> 'text',
-	'class'	=> 'form-control'//,
-	//'required'	=> 'required'
+	'class'	=> 'form-control',
+	'required'	=> 'required'
 );
 $first_name_attr = array(
 	'name'	=> 'first_name',
@@ -24,7 +24,18 @@ $last_name_attr = array(
 	'type'	=> 'text',
 	'class'	=> 'form-control'
 );
-
+$password_attr = array(
+    'name'  => 'password',
+    'id'    => 'password',
+    'size'  => '25',
+    'class' => 'form-control'
+);
+$password_confirm_attr = array(
+    'name'  => 'pass_confirm',
+    'id'    => 'pass_confirm',
+    'size'  => '25',
+    'class' => 'form-control'
+);
 ?>
         <div id="page-wrapper">
             <div class="row">
@@ -50,7 +61,7 @@ $last_name_attr = array(
                             	<label for="email">
                             		Email Address
                             	</label><br />
-                            	<div class="form-group input-group <?php echo null == form_error('email') ? '' : 'form-group has-error'; ?>">
+                            	<div class="form-group input-group <?php echo null == form_error('identity') ? '' : 'form-group has-error'; ?>">
                             		<span class="input-group-addon">@</span>
                             		<?php echo form_input($email_attr, set_value('email')); ?>
                             	</div>
@@ -58,25 +69,35 @@ $last_name_attr = array(
                             	<br />
 
                             	<?php echo form_fieldset("User Name / Level"); ?>
-                            	<label for="first_name">
-                            		First Name
-                            	</label>
-                            	<div class="form-group input-group <?php echo null === form_error('first_name') ? 'form-group has-error' : ''; ?>">
-                            		<?php echo form_input($first_name_attr, set_value('first_name')); ?>
-                            	</div>
-                            	<br />
-                            	<?php echo form_error('first_name'); ?>
-                            	<br />
-                            	<label for="Last_name">
-                            		Last Name
-                            	</label>
-                            	<div class="form-group input-group">
-                            		<?php echo form_input($last_name_attr, set_value('last_name')); ?>
-                            	</div>
-                            	
+                                	<label for="first_name">
+                                		First Name
+                                	</label>
+                                	<div class="form-group input-group <?php echo null === form_error('first_name') ? 'form-group has-error' : ''; ?>">
+                                		<?php echo form_input($first_name_attr, set_value('first_name')); ?>
+                                	</div>
+                                	<br />
+                                	<?php echo form_error('first_name'); ?>
+                                	<br />
+                                	<label for="last_name">
+                                		Last Name
+                                	</label>
+                                	<div class="form-group input-group">
+                                		<?php echo form_input($last_name_attr, set_value('last_name')); ?>
+                                	</div>                            	
                             	<?php echo form_fieldset_close(); ?>
                             	<?php echo form_fieldset("Password"); ?>
-                            	jfkdjflkdjflks
+                                    <label for="password">
+                                        Password
+                                    </label>
+                            	    <div class="form-group input-group  <?php echo null === form_error('password') ? 'form-group has-error' : ''; ?>">
+                                        <?php echo form_password($password_attr, set_value('password')); ?>
+                                    </div>
+                                    <label for="pass_confirm">
+                                        Confirm Password
+                                    </label>
+                                    <div class="form-group input-group  <?php echo null === form_error('pass_confirm') ? 'form-group has-error' : ''; ?>">
+                                        <?php echo form_password($password_confirm_attr); ?>
+                                    </div>
                             	<?php echo form_fieldset_close(); ?>
                             	<br />
                             	<?php echo form_submit("submit", "Add New User", "class='btn btn-success'"); ?>
